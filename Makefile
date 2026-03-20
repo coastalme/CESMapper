@@ -26,6 +26,7 @@ PLUGIN_UPLOAD = $(CURDIR)/plugin_upload.py
 # global
 
 PLUGINNAME = CESMapper
+PYTHON ?= python3
 
 PY_FILES = coastmap.py coastmapdialog.py __init__.py maketool.py
 
@@ -91,6 +92,11 @@ package: compile
 		rm -f $(PLUGINNAME).zip
 		git archive --prefix=$(PLUGINNAME)/ -o $(PLUGINNAME).zip $(VERSION)
 		echo "Created package: $(PLUGINNAME).zip"
+
+# Create a lean release archive from the maintained allowlist. The archive name
+# is derived from metadata.txt unless OUTPUT is provided.
+package-lean:
+	$(PYTHON) build_release_zip.py $(if $(OUTPUT),--output $(OUTPUT),)
 
 upload: zip
 	$(PLUGIN_UPLOAD) $(PLUGINNAME).zip

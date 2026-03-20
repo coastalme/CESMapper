@@ -1,0 +1,20 @@
+# Files and directories included in the lean QGIS plugin release archive.
+# Keep this list aligned with runtime imports and assets.
+
+__init__.py
+metadata.txt
+compat.py
+coastmap.py
+coastmapdialog.py
+maketool.py
+
+CESMComp.qml
+CESMConnect.qml
+CESMConnectRule.qml
+CESMicon.png
+GPL_License.txt
+
+ui_*.py
+img/
+Ontologies/
+Styles/
